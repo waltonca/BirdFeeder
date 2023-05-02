@@ -32,6 +32,10 @@ header button {
 .top .image-section {
     float: left;
 }
+.top .image-section img {
+    width: 100%;
+    border: 1px solid #333;
+}
 .top .sensor-section {
     float: right;
     width: 50%;
