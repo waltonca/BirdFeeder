@@ -1,0 +1,52 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 15px;
+    text-align: left;
+    overflow: hidden;
+}
+header h1 {
+    float: left;
+}
+header .buttons {
+    float: right;
+    
+}
+header button {
+    cursor: pointer;
+}
+
+.body {
+    padding: 15px;
+    overflow: hidden;
+}
+.body .top {
+    overflow: hidden;
+    padding-bottom: 40px;
+}
+.top .image-section {
+    float: left;
+}
+.top .sensor-section {
+    float: right;
+    width: 50%;
+}
+.sensor-section h2 {
+    padding-bottom: 15px;
+}
+
+.weather img {
+    width: 100%;
+}
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+    overflow: hidden;
+}

@@ -4,11 +4,49 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sample</title>
-    <link rel="stylesheet" href="css/style.css">
-    <script src="js.js"></script>
+    <title>Bird Feeder</title>
+    <link rel="stylesheet" href="./style/style.css">
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+    <script src="./script/bundle.js"></script>
 </head>
 <body>
-    
+    <header>
+        <h1>Bird Feeder</h1>
+        <div class="buttons">
+            <button id="start">Start</button>
+            <button id="stop">Stop</button>
+        </div>
+    </header>
+    <section class="body">
+        <div class="top">
+            <div class="image-section">
+                <h2>Latest Image</h2>
+                <h3>Time: <span id="time">2023.5.1 3:10</span></h3>
+                <div id="image"><img src="./images/bird1.jpg" alt="bird"></div>
+            </div>
+            <div class="sensor-section">
+                <h2>All the sensors data</h2>
+                <div class="temperature">
+                    <span>temperature:</span><span id="temperature">0</span>
+                </div>
+                <div class="humidity">
+                    <span>humidity:</span><span id="humidity">0</span>
+                </div>
+                <div class="battery">
+                    <span>battery:</span><span id="battery">100%</span>
+                </div>
+                <div class="signal">
+                    <span>signal:</span><span id="signal">-69 dBm</span>
+                </div>
+            </div>
+        </div>
+        <div class="bottom">
+            <h2>Weekly Forecast</h2>
+            <div class="weather">
+                <img src="./images/weather.png" alt="weather">
+            </div>
+        </div>
+    </section>
+    <footer>Copyright@2023 NSCC BirdFeeder Team</footer>
 </body>
 </html>

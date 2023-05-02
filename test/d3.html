@@ -1,0 +1,105 @@
+<!DOCTYPE html <html>
+
+<head>
+    <meta charset="utf-8">
+    <title>My Bar Chart</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+        /* Define styles for the chart */
+        .bar {
+            fill: orange;
+        }
+
+        text {
+            font-size: 16px;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Create a container for the chart -->
+    <svg width="400" height="200"></svg>
+    <script>
+        // Define the data source
+        var data = [4, 8, 15, 16, 23, 42];
+
+        // Define the chart dimensions
+        var width = 500;
+        var height = 300;
+
+        // Create the chart
+        var svg = d3.select("svg")
+            .attr("width", width)
+            .attr("height", height);
+
+
+        // Define the scale for the x-axis
+        var x = d3.scaleBand()
+            .range([0, width])
+            .domain(data.map(function (d, i) { return i; }));
+
+
+        // Define the scale for the y-axis
+        var y = d3.scaleLinear()
+            .range([height, 0])
+            .domain([0, d3.max(data)]);
+
+
+        // Add the bars to the chart
+        svg.selectAll(".bar")
+            .data(data)
+            .enter().append("rect")
+            .attr("class", "bar")
+            .attr("x", function (d, i) { return x(i); })
+            .attr("y", function (d) { return y(d); })
+            .attr("width", x.bandwidth())
+            .attr("height", function (d) { return height - y(d); });
+
+        // Add the x-axis labe
+        svg.append("text")
+            .attr("x", width / 2)
+            .attr("y", height + 40)
+            .attr("text-anchor", "middle")
+            .text("Label for X Axis");
+
+
+        // Add the y-axis label
+        svg.append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("x", 0 - height / 2)
+            .attr("y", -40)
+            .attr("text-anchor", "middle")
+            .text("Label for Y Axis");
+
+        // Add the tooltips
+        var tooltip = svg.append("g")
+            .attr("class", "tooltip")
+            .style("display", "none");
+
+        tooltip.append("rect")
+            .attr("width", 60)
+            .attr("height", 20)
+            .attr("fill", "white")
+            .style("opacity", 0.8);
+
+        tooltip.append("text")
+            .attr("x", 30)
+            .attr("dy", "1.2em")
+            .style("text-anchor", "middle");
+
+        // Show the tooltip on mouseover
+        svg.selectAll(".bar")
+            .on("mouseover", function (d) {
+                tooltip.style("display", null);
+                tooltip.select("text").text(d);
+            })
+
+            // Hide the tooltip on mouseout
+            .on("mouseout", function () {
+                tooltip.style("display", "none");
+            });
+    </script>
+</body>
+
+</html>
