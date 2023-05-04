@@ -7,9 +7,12 @@ html {
     font-size: 16px;
 }
 
+body {
+    background: url(../images/bg.svg) center 120% / auto no-repeat, linear-gradient(rgb(249, 255, 255) 0%, rgb(56, 200, 230) 100%);
+}
+
 header {
-    background-color: #333;
-    color: #fff;
+    color: rgb(47, 93, 138);
     padding: 15px;
     text-align: left;
     overflow: hidden;
@@ -31,6 +34,7 @@ header button {
 .body {
     padding: 15px;
     overflow: hidden;
+    font-family: Poppins, sans-serif;
 }
 
 .body .top {
@@ -50,11 +54,20 @@ header button {
 
 .top .sensor-section {
     float: right;
-    width: 38%;
+    width: 32%;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 3px;
+    border-radius: 15px;
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
 }
 
-.top .sensor-section h2 {
+h2 {
     padding-bottom: 25px;
+    font-weight: 500;
+    font-size: 1.125rem;
+    color: rgb(114, 126, 142);
 }
 
 .sensor-section svg {
@@ -96,7 +109,7 @@ header button {
     -webkit-box-align: center;
     align-items: center;
     font-size: 1rem;
-    width: 8rem;
+    width: 9rem;
 }
 
 .flayout1 span {
@@ -105,14 +118,58 @@ header button {
     font-size: 1rem;
 }
 
-.weather img {
-    width: 100%;
+.bottom {
+    margin-top: 1rem;
+    background-color: rgba(255, 255, 255, 0.75);
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 3px;
+    border-radius: 15px;
+    padding: 1.5rem 2rem;
+    overflow: hidden;
+}
+
+#weather {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    overflow-x: auto;
+}
+
+.weather-item {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.weather-item h6 {
+    font-weight: 600;
+    font-size: 1.125rem;
+    color: rgb(69, 129, 197);
+}
+
+.weather-item img {
+    width: 4rem;
+    height: 4rem rem;
+    margin: 0.7rem 0px;
+}
+
+.weather-item p {
+    font-weight: 600;
+    font-size: 1.125rem;
+    color: rgb(74, 111, 161);
+}
+
+.weather-item span {
+    font-size: 1.125rem;
+    color: rgb(74, 111, 161);
+    width: 5rem;
+    text-align: center;
 }
 
 footer {
-    background-color: #333;
     color: #fff;
-    padding: 15px;
+    padding: 30px;
     text-align: center;
     overflow: hidden;
 }

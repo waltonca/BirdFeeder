@@ -192,8 +192,8 @@ request.onreadystatechange = function () {
                     weatherIcon = "sunny";
             }
             // get lowest and highest temperature
-            const lowestTemp = weatherData[i].temp.min;
-            const highestTemp = weatherData[i].temp.max;
+            const lowestTemp = weatherData[i].temp.min.toFixed(1);
+            const highestTemp = weatherData[i].temp.max.toFixed(1);
 
             // display weather data HTML
             const weatherDiv = document.getElementById("weather");
