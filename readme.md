@@ -1,1 +1,3 @@
-## This is our work term project - Bird Feeder
+# Bird Feeder
+
+> This our work term project.

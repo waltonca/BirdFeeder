@@ -9,6 +9,8 @@ html {
 
 body {
     background: url(../images/bg.svg) center 120% / auto no-repeat, linear-gradient(rgb(249, 255, 255) 0%, rgb(56, 200, 230) 100%);
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -40,20 +42,27 @@ header button {
 .body .top {
     overflow: hidden;
     padding-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .top .image-section {
-    float: left;
-    width: 60%;
+    width: 54%;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 3px;
+    border-radius: 15px;
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
 }
 
 .top .image-section img {
     width: 100%;
     border: 1px solid #333;
+
 }
 
 .top .sensor-section {
-    float: right;
     width: 32%;
     background-color: rgb(255, 255, 255);
     box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 3px;
