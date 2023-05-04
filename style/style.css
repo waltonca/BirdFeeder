@@ -3,6 +3,10 @@
     margin: 0;
 }
 
+html {
+    font-size: 16px;
+}
+
 header {
     background-color: #333;
     color: #fff;
@@ -10,13 +14,16 @@ header {
     text-align: left;
     overflow: hidden;
 }
+
 header h1 {
     float: left;
 }
+
 header .buttons {
     float: right;
-    
+
 }
+
 header button {
     cursor: pointer;
 }
@@ -25,28 +32,83 @@ header button {
     padding: 15px;
     overflow: hidden;
 }
+
 .body .top {
     overflow: hidden;
     padding-bottom: 40px;
 }
+
 .top .image-section {
     float: left;
+    width: 60%;
 }
+
 .top .image-section img {
     width: 100%;
     border: 1px solid #333;
 }
+
 .top .sensor-section {
     float: right;
-    width: 50%;
+    width: 38%;
 }
-.sensor-section h2 {
-    padding-bottom: 15px;
+
+.top .sensor-section h2 {
+    padding-bottom: 25px;
+}
+
+.sensor-section svg {
+    fill: rgb(161, 185, 206);
+    margin-right: 1rem;
+    width: 1.6rem;
+}
+
+.temperature {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    margin-bottom: 0.8rem;
+}
+
+.humidity {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    margin-bottom: 0.8rem;
+}
+
+.flayout1 {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: start;
+    justify-content: flex-start;
+    margin-bottom: 0.8rem;
+}
+
+.flayout1 div {
+    color: rgb(123, 152, 178);
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    font-size: 1rem;
+    width: 8rem;
+}
+
+.flayout1 span {
+    color: rgb(48, 128, 200);
+    font-weight: 500;
+    font-size: 1rem;
 }
 
 .weather img {
     width: 100%;
 }
+
 footer {
     background-color: #333;
     color: #fff;
