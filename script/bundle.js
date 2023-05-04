@@ -1,8 +1,8 @@
 // fake data
 const jsonData = {
-  "temperature": 20,
-  "humidity": 50,
-  "foodLevel": 50
+    temperature: 20,
+    humidity: 50,
+    foodLevel: 50,
 };
 const jsonDataString = JSON.stringify(jsonData);
 
@@ -13,121 +13,216 @@ const jsonDataString = JSON.stringify(jsonData);
 // }
 
 const options = {
-  clientId: 'clientId-walton',
+    clientId: "clientId-walton",
 };
 
-const client = mqtt.connect('wss://broker.hivemq.com:8884/mqtt', options);
+const client = mqtt.connect("wss://broker.hivemq.com:8884/mqtt", options);
 
 console.log("Connecting mqtt client");
 
-client.on('connect', function() {
+client.on("connect", function () {
+    console.log("Connected to mqtt client");
 
-  console.log("Connected to mqtt client");
+    // subscribe to Sensors topic
+    client.subscribe("birdFeeder$@NsCc&_%/Sensors/#");
+    // subscribe to Photos topic
+    client.subscribe("birdFeeder$@NsCc&_%/Photos/#");
 
-  // subscribe to Sensors topic
-  client.subscribe('birdFeeder$@NsCc&_%/Sensors/#')
-  // subscribe to Photos topic
-  client.subscribe('birdFeeder$@NsCc&_%/Photos/#');
-  
-  // publish fake data
-  // client.publish('birdFeeder', jsonDataString);
+    // publish fake data
+    // client.publish('birdFeeder', jsonDataString);
 
-  // subscribe to Sensors topic
-  client.on('message', function(topic, message) {
-      // message is Buffer
-      // console.log(message.toString()); 
-      // convert message to json
-      if (topic === 'birdFeeder$@NsCc&_%/Sensors') { // Sensors topic
-        let sensors = message;
-        const sensorsJson = JSON.parse(sensors.toString());
-        console.log(`temperature: ${sensorsJson.temp_c}`);
-        console.log(`humidity: ${sensorsJson.humidity}`);
-        document.getElementById("temperature_c").innerHTML = sensorsJson.temp_c;
-        // document.getElementById("temperature_f").innerHTML = sensorsJson.temp_f;
-        document.getElementById("humidity").innerHTML = sensorsJson.humidity;
-      }
-    
-      if (topic === 'birdFeeder$@NsCc&_%/Photos') { // Photos topic
-        let photo = message;
-        const photoBase64 = photo.toString();
-        console.log(`image: ${photoBase64}`);
-        document.getElementById("image").innerHTML = `<img src="data:image/png;base64,${photoBase64}" alt="image">`;
-      }
-      
-      // client.end();
-  });
+    // subscribe to Sensors topic
+    client.on("message", function (topic, message) {
+        // message is Buffer
+        // console.log(message.toString());
+        // convert message to json
+        if (topic === "birdFeeder$@NsCc&_%/Sensors") {
+            // Sensors topic
+            let sensors = message;
+            const sensorsJson = JSON.parse(sensors.toString());
+            console.log(`temperature: ${sensorsJson.temp_c}`);
+            console.log(`humidity: ${sensorsJson.humidity}`);
+            document.getElementById("temperature_c").innerHTML =
+                sensorsJson.temp_c;
+            // document.getElementById("temperature_f").innerHTML = sensorsJson.temp_f;
+            document.getElementById("humidity").innerHTML =
+                sensorsJson.humidity;
+        }
+
+        if (topic === "birdFeeder$@NsCc&_%/Photos") {
+            // Photos topic
+            let photo = message;
+            const photoBase64 = photo.toString();
+            console.log(`image: ${photoBase64}`);
+            document.getElementById(
+                "image"
+            ).innerHTML = `<img src="data:image/png;base64,${photoBase64}" alt="image">`;
+        }
+
+        // client.end();
+    });
 });
 
-client.on('error', function(error) {
-  console.log("Can't connect to mqtt client" + error);
-  process.exit(1);
-})
-
+client.on("error", function (error) {
+    console.log("Can't connect to mqtt client" + error);
+    process.exit(1);
+});
 
 // TODO: call weather API to get weather data
 // API: https://api.openweathermap.org/data/2.5/forecast/daily?lat=44.668987&lon=-63.613506&appid=20571ab45c74dc2a1897b60c5b8047a1&units=metric
 // Step1: get weather data
-const API_KEY = '20571ab45c74dc2a1897b60c5b8047a1';
-const LOCATION_LAT = '44.668987';
-const LOCATION_LON = '-63.613506';
+const API_KEY = "20571ab45c74dc2a1897b60c5b8047a1";
+const LOCATION_LAT = "44.668987";
+const LOCATION_LON = "-63.613506";
 
 const request = new XMLHttpRequest();
 
-request.onreadystatechange = function() {
+request.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
         const response = JSON.parse(this.responseText);
         console.log(response);
         // Step2: display weather data
         // 7 days weather data
-        // const weatherData = [];
-        // // for (let i = 0; i < response.list.length; i++) {
-        // //     if (response.list[i].dt_txt.includes('00:00:00')) {
-        // //         weatherData.push(response.list[i]);
-        // //     }
-        // // }
-        // console.log(weatherData);
-        // display 5 days weather data
-          
-            // <div class="sc-AxhUy fxWvvr">
-            //   <h6>Fri</h6>
-            //   <svg width="48" height="48" viewBox="0 0 48 48"><path fill="#BBDEFB" d="M29.5 5A8.5 8.5 0 1 0 29.5 22A8.5 8.5 0 1 0 29.5 5Z"></path><path fill="#BBDEFB" d="M37 14.893A7 7 0 1 0 37 28.893 7 7 0 1 0 37 14.893zM11 15A7 7 0 1 0 11 29 7 7 0 1 0 11 15z"></path><path fill="#BBDEFB" d="M17.5 8A6.5 6.5 0 1 0 17.5 21A6.5 6.5 0 1 0 17.5 8Z"></path><path fill="#BBDEFB" d="M25 12.893A7 7 0 1 0 25 26.893A7 7 0 1 0 25 12.893Z"></path><path fill="#BBDEFB" d="M7,25c0,2.209,1.791,4,4,4h25c2.209,0,4-1.791,4-4v-1c0-2.209-1.791-4-4-4H11c-2.209,0-4,1.791-4,4V25z"></path><g><path fill="#2196F3" d="M34.95 37.15c-1.132 1.133-2.968 1.133-4.101 0-1.134-1.131-1.133-2.969 0-4.1C31.982 31.917 37 31 37 31S36.082 36.02 34.95 37.15zM23.95 41.15c-1.132 1.132-2.968 1.132-4.101 0-1.133-1.133-1.132-2.969 0-4.101 1.133-1.133 6.152-2.05 6.152-2.05S25.082 40.02 23.95 41.15zM13.95 37.15c-1.132 1.133-2.968 1.133-4.101 0-1.133-1.131-1.132-2.969 0-4.1 1.132-1.133 6.151-2.05 6.151-2.05S15.082 36.02 13.95 37.15z"></path></g></svg>
-            //   <p>Rain</p>
-            //   <span>6<sup>°</sup><small>/</small>2<sup>°</sup></span>
-            // </div>
+        const weatherData = response.list;
+        console.log(weatherData);
+        // display weather data, use different vsg icon to display different weather
+        // need a loop to display 7 days weather data
+        for (var i = 0; i < weatherData.length; i++) {
+            // get day of week
+            const date = new Date(weatherData[i].dt * 1000);
+            const day = date.getDay();
+            const dayList = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+            const dayOfWeek = dayList[day];
 
-            // check weather
-            let Icon;
-            
+            // get weather icon and name
+            let weatherIcon;
+            let weatherName = weatherData[i].weather[0].main;
+            let weatherCode = weatherData[i].weather[0].id;
+            switch (weatherCode) {
+                // Clear
+                case 800:
+                    weatherIcon = "sunny";
+                    break;
+
+                // Cloud
+                case 801:
+                case 802:
+                    weatherIcon = "partlycloudy";
+                    break;
+                case 803:
+                case 804:
+                    weatherIcon = "cloudy";
+                    break;
+
+                // Rain
+                case 500:
+                case 501:
+                case 520:
+                case 521:
+                case 511:
+                    weatherIcon = "rain";
+                    break;
+                case 502:
+                case 503:
+                case 504:
+                case 522:
+                case 531:
+                    weatherIcon = "heavyrain";
+                    break;
+
+                // Drizzle
+                case 300:
+                case 301:
+                case 302:
+                case 310:
+                case 311:
+                case 312:
+                case 313:
+                case 314:
+                case 321:
+                    weatherIcon = "rain";
+                    break;
+
+                // Thunderstorm
+                case 200:
+                case 201:
+                case 202:
+                case 210:
+                case 211:
+                case 212:
+                case 221:
+                case 230:
+                case 231:
+                case 232:
+                    weatherIcon = "thunderstorm";
+                    break;
+
+                // Snow
+                case 600:
+                case 601:
+                case 602:
+                case 612:
+                case 613:
+                case 615:
+                case 616:
+                case 620:
+                case 621:
+                case 622:
+                    weatherIcon = "snow";
+                    break;
+                case 611:
+                    weatherIcon = "sleet";
+                    break;
+
+                // Atmosphere
+                case 701:
+                case 711:
+                case 721:
+                case 731:
+                case 741:
+                case 751:
+                case 761:
+                case 762:
+                case 771:
+                case 781:
+                    weatherIcon = "haze";
+                    break;
+
+                default:
+                    weatherIcon = "sunny";
+            }
+            // get lowest and highest temperature
+            const lowestTemp = weatherData[i].temp.min;
+            const highestTemp = weatherData[i].temp.max;
+
+            // display weather data HTML
+            const weatherDiv = document.getElementById("weather");
+            weatherDiv.innerHTML += `
+            <div class="weather-item">
+            <h6>${dayOfWeek}</h6>
+            <img src="images/weather/${weatherIcon}.svg" alt="${weatherName}">
+            <p>${weatherName}</p>
+            <span>${lowestTemp}<sup>°</sup><small>/</small>${highestTemp}<sup>°</sup></span></div>`;
+        }
     } else {
         console.log("error");
     }
 };
-request.open(`GET`, `https://api.openweathermap.org/data/2.5/forecast/daily?lat=${LOCATION_LAT}&lon=${LOCATION_LON}&appid=${API_KEY}&units=metric`);
+request.open(
+    `GET`,
+    `https://api.openweathermap.org/data/2.5/forecast/daily?lat=${LOCATION_LAT}&lon=${LOCATION_LON}&appid=${API_KEY}&units=metric`
+);
 request.send();
-
-
-
 
 // TODO: use data visualization library to display sensor data(our own data)
 
-// function convertImgToByteArray(img) {
-//   var reader = new FileReader();
-//   reader.readAsArrayBuffer(img);
-//   reader.onload = function(event) {
-//     var byteArray = new Uint8Array(event.target.result);
-//     console.log(byteArray); // do something with the byte array
-//   };
-// }
-
 // download image function
 function downloadImage() {
-  var img = document.getElementById("image").querySelector('img');
-  var link = document.createElement('a');
-  link.href = img.src;
-  link.download = 'image.png';
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+    var img = document.getElementById("image").querySelector("img");
+    var link = document.createElement("a");
+    link.href = img.src;
+    link.download = "image.png";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 }
-
-
