@@ -40,6 +40,10 @@ header button {
     cursor: pointer;
 }
 
+header #datetime {
+    font-size: 2rem;
+}
+
 .body {
     padding: 0 60px;
     overflow: hidden;
@@ -48,13 +52,12 @@ header button {
 
 .body .top {
     overflow: hidden;
-    padding-bottom: 5px;
     display: flex;
     justify-content: space-between;
 }
 
 .top .image-section {
-    width: 35%;
+    width: 45%;
     background-color: rgb(255, 255, 255);
     box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 3px;
     border-radius: 15px;
@@ -65,12 +68,41 @@ header button {
 
 .top .image-section img {
     width: 100%;
-    border: 1px solid #333;
+}
 
+.top .image-section #image {
+    position: relative;
+}
+
+.top .image-section #image #time {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 1.5rem;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #fff;
+}
+
+.top .image-section button {
+    float: right;
+    border-radius: 8px;
+    /* Half of the width and height */
+    background: #95e8f4;
+    /* Blue color */
+    color: #3d4e50;
+    /* White text */
+    text-align: center;
+    line-height: 20px;
+    /* Center the text vertically */
+    cursor: pointer;/
 }
 
 .top .sensor-section {
-    width: 32%;
+    width: 42%;
     background-color: rgb(255, 255, 255);
     box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 3px;
     border-radius: 15px;
@@ -185,7 +217,7 @@ h2 {
 
 footer {
     color: #fff;
-    padding: 30px;
+    padding: 10px;
     text-align: center;
     overflow: hidden;
 }

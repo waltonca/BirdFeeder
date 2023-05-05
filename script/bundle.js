@@ -57,11 +57,15 @@ client.on("connect", function () {
         if (topic === "birdFeeder$@NsCc&_%/Photos") {
             // Photos topic
             let photo = message;
+            let imageTime = displayTime();
             const photoBase64 = photo.toString();
             console.log(`image: ${photoBase64}`);
             document.getElementById(
                 "image"
             ).innerHTML = `<img src="data:image/png;base64,${photoBase64}" alt="image">`;
+            document.getElementById(
+                "image"
+            ).innerHTML += `<span id="time">${imageTime}</span>`;
         }
 
         // client.end();
@@ -256,4 +260,5 @@ function displayTime() {
     // Display the date and time string in an HTML element
     console.log(datetimeString);
     document.getElementById("datetime").innerHTML = datetimeString;
+    return datetimeString;
 }
