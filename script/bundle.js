@@ -18,8 +18,10 @@ const jsonDataString = JSON.stringify(jsonData);
 setInterval(displayTime, 1000);
 
 const options = {
-    clientId: "clientId-walton",
+    clientId: "clientId-walton-" + generateUUID(),
 };
+
+console.log(options.clientId);
 
 const client = mqtt.connect("wss://broker.hivemq.com:8884/mqtt", options);
 
@@ -45,8 +47,8 @@ client.on("connect", function () {
             // Sensors topic
             let sensors = message;
             const sensorsJson = JSON.parse(sensors.toString());
-            console.log(`temperature: ${sensorsJson.temp_c}`);
-            console.log(`humidity: ${sensorsJson.humidity}`);
+            // console.log(`temperature: ${sensorsJson.temp_c}`);
+            // console.log(`humidity: ${sensorsJson.humidity}`);
             document.getElementById("temperature_c").innerHTML =
                 sensorsJson.temp_c;
             // document.getElementById("temperature_f").innerHTML = sensorsJson.temp_f;
@@ -58,14 +60,10 @@ client.on("connect", function () {
             // Photos topic
             let photo = message;
             let imageTime = displayTime();
+            // console.log(`time: ${imageTime}`);
             const photoBase64 = photo.toString();
             console.log(`image: ${photoBase64}`);
-            document.getElementById(
-                "image"
-            ).innerHTML = `<img src="data:image/png;base64,${photoBase64}" alt="image">`;
-            document.getElementById(
-                "image"
-            ).innerHTML += `<span id="time">${imageTime}</span>`;
+            document.getElementById("image").innerHTML = `<img src="data:image/png;base64,${photoBase64}" alt="image"><span id="time">${imageTime}</span>`;
         }
 
         // client.end();
@@ -258,7 +256,21 @@ function displayTime() {
     let datetimeString = `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
 
     // Display the date and time string in an HTML element
-    console.log(datetimeString);
+    // console.log(datetimeString);
     document.getElementById("datetime").innerHTML = datetimeString;
     return datetimeString;
+}
+
+// TODO: add timestamp and random number to the client ID, otherwise, the client ID will be the same. When multi users use this website, this will cause a problem. each time only one unqiue client ID can be linked to the MQTT broker.
+function generateUUID() {
+    let uuid = '', i, random;
+    for (i = 0; i < 32; i++) {
+        random = Math.random() * 16 | 0;
+        if (i === 8 || i === 12 || i === 16 || i === 20) {
+            uuid += '-';
+        }
+        uuid += (i === 12 ? 4 : (i === 16 ? (random & 3 | 8) : random))
+            .toString(16);
+    }
+    return uuid;
 }
