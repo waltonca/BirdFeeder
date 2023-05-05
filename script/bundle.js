@@ -12,6 +12,11 @@ const jsonDataString = JSON.stringify(jsonData);
 //   password: 'Nscc123!@#'
 // }
 
+// main
+// display time and date every second
+// Call the displayTime() function every second
+setInterval(displayTime, 1000);
+
 const options = {
     clientId: "clientId-walton",
 };
@@ -225,4 +230,30 @@ function downloadImage() {
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+}
+
+// TODO: display time and date
+function displayTime() {
+    // Create a new Date object
+    let currentDate = new Date();
+
+    // Get the current time and date components
+    let hours = currentDate.getHours();
+    let minutes = currentDate.getMinutes();
+    let seconds = currentDate.getSeconds();
+    let day = currentDate.getDate();
+    let month = currentDate.getMonth() + 1;
+    let year = currentDate.getFullYear();
+
+    // Add leading zeros to the time components if necessary
+    hours = hours < 10 ? "0" + hours : hours;
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    seconds = seconds < 10 ? "0" + seconds : seconds;
+
+    // Format the date and time string
+    let datetimeString = `${day}/${month}/${year} ${hours}:${minutes}:${seconds}`;
+
+    // Display the date and time string in an HTML element
+    console.log(datetimeString);
+    document.getElementById("datetime").innerHTML = datetimeString;
 }

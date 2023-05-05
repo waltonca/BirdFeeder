@@ -11,13 +11,20 @@ body {
     background: url(../images/bg.svg) center 120% / auto no-repeat, linear-gradient(rgb(249, 255, 255) 0%, rgb(56, 200, 230) 100%);
     display: flex;
     flex-direction: column;
+    height: 100vh;
 }
 
 header {
     color: rgb(47, 93, 138);
-    padding: 15px;
+    padding: 20px 60px;
     text-align: left;
     overflow: hidden;
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    height: 4rem;
 }
 
 header h1 {
@@ -34,20 +41,20 @@ header button {
 }
 
 .body {
-    padding: 15px;
+    padding: 0 60px;
     overflow: hidden;
     font-family: Poppins, sans-serif;
 }
 
 .body .top {
     overflow: hidden;
-    padding-bottom: 40px;
+    padding-bottom: 5px;
     display: flex;
     justify-content: space-between;
 }
 
 .top .image-section {
-    width: 54%;
+    width: 35%;
     background-color: rgb(255, 255, 255);
     box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 3px;
     border-radius: 15px;
@@ -73,7 +80,7 @@ header button {
 }
 
 h2 {
-    padding-bottom: 25px;
+    padding-bottom: 15px;
     font-weight: 500;
     font-size: 1.125rem;
     color: rgb(114, 126, 142);

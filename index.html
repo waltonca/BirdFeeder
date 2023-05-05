@@ -7,24 +7,26 @@
         <title>Bird Feeder</title>
         <link rel="stylesheet" href="./style/style.css" />
         <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
-        <script src="./script/bundle.js"></script>
+        <script src="./script/bundle.js" defer></script>
     </head>
     <body>
         <header>
             <h1>Bird Feeder</h1>
             <div class="buttons">
-                <button id="start">Start</button>
-                <button id="stop">Stop</button>
+                <!-- <button id="start">Start</button>
+                <button id="stop">Stop</button> -->
+                <!-- right use here to display real time -->
+                <div id="datetime"></div>
             </div>
         </header>
         <section class="body">
             <div class="top">
                 <div class="image-section">
                     <h2>Latest Image</h2>
-                    <h3>Time: <span id="time">2023.5.1 3:10</span></h3>
                     <!-- <div id="image"><img src="./images/bird1.jpg" alt="bird"></div> -->
                     <div id="image">
                         <img src="./images//preload.jpg" alt="bird" />
+                        <span id="time">2023.5.1 3:10</span>
                     </div>
                     <button onclick="downloadImage()">download</button>
                 </div>
