@@ -34,6 +34,8 @@ client.on("connect", function () {
     client.subscribe("birdFeeder$@NsCc&_%/Sensors/#");
     // subscribe to Photos topic
     client.subscribe("birdFeeder$@NsCc&_%/Photos/#");
+    // subscribe to WiFi topic
+    client.subscribe("birdFeeder$@NsCc&_%/WiFi/#");
 
     // publish fake data
     // client.publish('birdFeeder', jsonDataString);
@@ -64,6 +66,15 @@ client.on("connect", function () {
             const photoBase64 = photo.toString();
             console.log(`image: ${photoBase64}`);
             document.getElementById("image").innerHTML = `<img src="data:image/png;base64,${photoBase64}" alt="image"><span id="time">${imageTime}</span>`;
+        }
+
+        if (topic === "birdFeeder$@NsCc&_%/WiFi") {
+            // Wifi topic
+            let wifi = message;
+            // const wifi = photo.toString();
+            const wifiJson = JSON.parse(wifi.toString());
+            console.log(`WiFi: ${wifiJson}`);
+            document.getElementById("network").innerHTML = wifiJson;
         }
 
         // client.end();
