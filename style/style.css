@@ -1,6 +1,7 @@
 * {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
 html {
@@ -58,7 +59,7 @@ header #datetime {
 }
 
 .top .image-section {
-    width: 43%;
+    width: 44%;
     background-color: rgb(255, 255, 255);
     box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 3px;
     border-radius: 15px;
@@ -104,7 +105,17 @@ header #datetime {
 }
 
 .top .sensor-section {
-    width: 42%;
+    width: 30%;
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 3px;
+    border-radius: 15px;
+    padding: 1.5rem 2rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.top .weather-today {
+    width: 23%;
     background-color: rgb(255, 255, 255);
     box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 3px;
     border-radius: 15px;
