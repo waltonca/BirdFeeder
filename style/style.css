@@ -124,6 +124,25 @@ header #datetime {
     flex-direction: column;
 }
 
+.temperature {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 0.8rem;
+    font-size: 4rem;
+    color: rgb(48, 128, 200)
+}
+
+#weatherToday {
+    width: 5rem;
+}
+
+#weatherToday img {
+    width: 100%;
+}
+
+#temperature_c {}
+
 h2 {
     padding-bottom: 15px;
     font-weight: 800;
@@ -137,14 +156,7 @@ h2 {
     width: 1.6rem;
 }
 
-.temperature {
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: start;
-    justify-content: flex-start;
-    margin-bottom: 0.8rem;
-}
+
 
 .humidity {
     display: flex;
@@ -256,7 +268,7 @@ h2 {
 
 .weather-item img {
     width: 4rem;
-    height: 4rem rem;
+    height: 4rem;
     margin: 0.7rem 0px;
 }
 

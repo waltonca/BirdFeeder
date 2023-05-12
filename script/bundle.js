@@ -221,6 +221,12 @@ request.onreadystatechange = function () {
             <img src="images/weather/${weatherIcon}.svg" alt="${weatherName}">
             <p>${weatherName}</p>
             <span>${lowestTemp}<sup>°</sup><small>/</small>${highestTemp}<sup>°</sup></span></div>`;
+
+            if (i == 0) {
+                // display today's weather data on weather today section, only the icon
+                const weatherTodayIcon = document.getElementById("weatherToday");
+                weatherTodayIcon.innerHTML = `<img src="images/weather/${weatherIcon}.svg" alt="${weatherName}">`;
+            }
         }
     } else {
         console.log("error");
