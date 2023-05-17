@@ -10,53 +10,19 @@
         <script src="./script/bundle.js" defer></script>
     </head>
     <body>
-        <header>
-            <h1>Bird Feeder</h1>
-            <div class="buttons">
-                <!-- <button id="start">Start</button>
-                <button id="stop">Stop</button> -->
-                <!-- right use here to display real time -->
-                <div id="datetime"></div>
-            </div>
-        </header>
-        <section class="body grid-container">
-            <div class="image-section">
-                <h2>
-                    <span>Latest Image</span
-                    ><button onclick="downloadImage()">download</button>
-                </h2>
-                <!-- <div id="image"><img src="./images/bird1.jpg" alt="bird"></div> -->
+        <section class="grid-container">
+            <div class="latest-image">
                 <div id="image">
                     <img src="./images/preload.jpg" alt="bird" />
                     <span id="time">2023.5.1 3:10</span>
                 </div>
             </div>
-            <div class="sensor-section">
+
+            <div class="sensors">
                 <div class="title">
                     <h2>Current Sensors Data</h2>
-                    <div class="btn-slide">
-                        <label class="sc-fzokOt hqCryO"
-                            ><span class="off">F</span>
-                            <div
-                                class="sc-fzqBZW bzpPMg"
-                                style="transform: translateX(0px)"
-                            ></div
-                        ></label>
-                    </div>
                 </div>
 
-                <div class="humidity flayout1">
-                    <div>
-                        <svg width="12" height="18" viewBox="0 0 12 18">
-                            <path
-                                d="M12,1a.667.667,0,0,0-.536.272l-.02.026C9.87,3.324,6,9.682,6,13a6,6,0,1,0,12,0c0-3.314-3.861-9.66-5.439-11.693,0,0,0,0,0,0l-.025-.034A.667.667,0,0,0,12,1Zm2.333,13.333a1,1,0,1,1-1,1A1,1,0,0,1,14.333,14.333Z"
-                                transform="translate(-6 -1)"
-                            ></path>
-                        </svg>
-                        Humidity
-                    </div>
-                    <span id="humidity">0</span><span>%</span>
-                </div>
                 <div class="battery flayout1">
                     <div>
                         <svg width="20" height="20" viewBox="0 0 64 64">
@@ -78,6 +44,7 @@
                     </div>
                     <span id="battery">100%</span>
                 </div>
+
                 <div class="network flayout1">
                     <div>
                         <svg
@@ -106,20 +73,43 @@
                     <span id="network">0</span><span>%</span>
                 </div>
             </div>
+
             <div class="weather-today">
-                <h2>Weather Today</h2>
+                <div class="title">
+                    <h2>Weather Today</h2>
+                    <div class="btn-slide">
+                        <label class="sc-fzokOt hqCryO"
+                            ><span class="off">F</span>
+                            <div
+                                class="sc-fzqBZW bzpPMg"
+                                style="transform: translateX(0px)"
+                            ></div
+                        ></label>
+                    </div>
+                </div>
+
                 <div class="temperature flayout3">
                     <!-- <span>temperature_f:</span><span id="temperature_f">0</span> -->
                     <div id="weatherToday"></div>
-                    <span id="temperature_c">0</span><sup>°</sup>
+                    <span id="temperature_c">0</span><sup class="t-unit">°</sup>
+                    <div class="humidity">
+                        <div>Humidity</div>
+                        <span id="humidity">0</span><span>%</span>
+                    </div>
                 </div>
             </div>
 
+            <div class="other-picture">4</div>
+            <div class="other-picture">5</div>
+            <div class="other-picture">6</div>
+            <div class="other-picture">7</div>
+
             <div class="weather-forecast">
-                <h2>Extended Forecast</h2>
+                <div class="title">
+                    <h2>Weather Forecast</h2>
+                </div>
                 <div id="weather"></div>
             </div>
         </section>
-        <footer>Copyright@2023 NSCC BirdFeeder Team</footer>
     </body>
 </html>
