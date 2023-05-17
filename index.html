@@ -20,104 +20,102 @@
             </div>
         </header>
         <section class="body grid-container">
-            <div class="top">
-                <div class="image-section">
-                    <h2>
-                        <span>Latest Image</span
-                        ><button onclick="downloadImage()">download</button>
-                    </h2>
-                    <!-- <div id="image"><img src="./images/bird1.jpg" alt="bird"></div> -->
-                    <div id="image">
-                        <img src="./images/preload.jpg" alt="bird" />
-                        <span id="time">2023.5.1 3:10</span>
+            <div class="image-section">
+                <h2>
+                    <span>Latest Image</span
+                    ><button onclick="downloadImage()">download</button>
+                </h2>
+                <!-- <div id="image"><img src="./images/bird1.jpg" alt="bird"></div> -->
+                <div id="image">
+                    <img src="./images/preload.jpg" alt="bird" />
+                    <span id="time">2023.5.1 3:10</span>
+                </div>
+            </div>
+            <div class="sensor-section">
+                <div class="title">
+                    <h2>Current Sensors Data</h2>
+                    <div class="btn-slide">
+                        <label class="sc-fzokOt hqCryO"
+                            ><span class="off">F</span>
+                            <div
+                                class="sc-fzqBZW bzpPMg"
+                                style="transform: translateX(0px)"
+                            ></div
+                        ></label>
                     </div>
                 </div>
-                <div class="weather-today">
-                    <h2>Weather Today</h2>
-                    <div class="temperature flayout3">
-                        <!-- <span>temperature_f:</span><span id="temperature_f">0</span> -->
-                        <div id="weatherToday"></div>
-                        <span id="temperature_c">0</span><sup>°</sup>
-                    </div>
-                </div>
-                <div class="sensor-section">
-                    <div class="title">
-                        <h2>Current Sensors Data</h2>
-                        <div class="btn-slide">
-                            <label class="sc-fzokOt hqCryO"
-                                ><span class="off">F</span>
-                                <div
-                                    class="sc-fzqBZW bzpPMg"
-                                    style="transform: translateX(0px)"
-                                ></div
-                            ></label>
-                        </div>
-                    </div>
 
-                    <div class="humidity flayout1">
-                        <div>
-                            <svg width="12" height="18" viewBox="0 0 12 18">
-                                <path
-                                    d="M12,1a.667.667,0,0,0-.536.272l-.02.026C9.87,3.324,6,9.682,6,13a6,6,0,1,0,12,0c0-3.314-3.861-9.66-5.439-11.693,0,0,0,0,0,0l-.025-.034A.667.667,0,0,0,12,1Zm2.333,13.333a1,1,0,1,1-1,1A1,1,0,0,1,14.333,14.333Z"
-                                    transform="translate(-6 -1)"
-                                ></path>
-                            </svg>
-                            Humidity
-                        </div>
-                        <span id="humidity">0</span><span>%</span>
+                <div class="humidity flayout1">
+                    <div>
+                        <svg width="12" height="18" viewBox="0 0 12 18">
+                            <path
+                                d="M12,1a.667.667,0,0,0-.536.272l-.02.026C9.87,3.324,6,9.682,6,13a6,6,0,1,0,12,0c0-3.314-3.861-9.66-5.439-11.693,0,0,0,0,0,0l-.025-.034A.667.667,0,0,0,12,1Zm2.333,13.333a1,1,0,1,1-1,1A1,1,0,0,1,14.333,14.333Z"
+                                transform="translate(-6 -1)"
+                            ></path>
+                        </svg>
+                        Humidity
                     </div>
-                    <div class="battery flayout1">
-                        <div>
-                            <svg width="20" height="20" viewBox="0 0 64 64">
-                                <g xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M47.122,17.006H7c-0.553,0-1,0.447-1,1v26c0,0.553,0.447,1,1,1h33.872c0.553,0,0.929-0.404,1.128-1   l5.968-25.859C48.165,17.439,47.675,17.006,47.122,17.006z M40.178,43.006H8v-24h37.717L40.178,43.006z"
-                                    />
-                                    <path
-                                        d="M60,21.006h-2v-6c0-2.211-1.789-4-4-4H4c-2.211,0-4,1.789-4,4v32c0,2.211,1.789,4,4,4h50   c2.211,0,4-1.789,4-4v-6h2c2.211,0,4-1.789,4-4v-12C64,22.795,62.211,21.006,60,21.006z M56,47.006c0,1.104-0.896,2-2,2H4   c-1.104,0-2-0.896-2-2v-32c0-1.104,0.896-2,2-2h50c1.104,0,2,0.896,2,2V47.006z M62,37.006c0,1.104-0.896,2-2,2h-2v-16h2   c1.104,0,2,0.896,2,2V37.006z"
-                                    />
-                                    <path
-                                        d="M15,32.006h2v2c0,0.553,0.447,1,1,1s1-0.447,1-1v-2h2c0.553,0,1-0.447,1-1s-0.447-1-1-1h-2v-2   c0-0.553-0.447-1-1-1s-1,0.447-1,1v2h-2c-0.553,0-1,0.447-1,1S14.447,32.006,15,32.006z"
-                                    />
-                                    <path
-                                        d="M31,32.006h6c0.553,0,1-0.447,1-1s-0.447-1-1-1h-6c-0.553,0-1,0.447-1,1S30.447,32.006,31,32.006z"
-                                    />
-                                </g></svg
-                            >Battery
-                        </div>
-                        <span id="battery">100%</span>
+                    <span id="humidity">0</span><span>%</span>
+                </div>
+                <div class="battery flayout1">
+                    <div>
+                        <svg width="20" height="20" viewBox="0 0 64 64">
+                            <g xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M47.122,17.006H7c-0.553,0-1,0.447-1,1v26c0,0.553,0.447,1,1,1h33.872c0.553,0,0.929-0.404,1.128-1   l5.968-25.859C48.165,17.439,47.675,17.006,47.122,17.006z M40.178,43.006H8v-24h37.717L40.178,43.006z"
+                                />
+                                <path
+                                    d="M60,21.006h-2v-6c0-2.211-1.789-4-4-4H4c-2.211,0-4,1.789-4,4v32c0,2.211,1.789,4,4,4h50   c2.211,0,4-1.789,4-4v-6h2c2.211,0,4-1.789,4-4v-12C64,22.795,62.211,21.006,60,21.006z M56,47.006c0,1.104-0.896,2-2,2H4   c-1.104,0-2-0.896-2-2v-32c0-1.104,0.896-2,2-2h50c1.104,0,2,0.896,2,2V47.006z M62,37.006c0,1.104-0.896,2-2,2h-2v-16h2   c1.104,0,2,0.896,2,2V37.006z"
+                                />
+                                <path
+                                    d="M15,32.006h2v2c0,0.553,0.447,1,1,1s1-0.447,1-1v-2h2c0.553,0,1-0.447,1-1s-0.447-1-1-1h-2v-2   c0-0.553-0.447-1-1-1s-1,0.447-1,1v2h-2c-0.553,0-1,0.447-1,1S14.447,32.006,15,32.006z"
+                                />
+                                <path
+                                    d="M31,32.006h6c0.553,0,1-0.447,1-1s-0.447-1-1-1h-6c-0.553,0-1,0.447-1,1S30.447,32.006,31,32.006z"
+                                />
+                            </g></svg
+                        >Battery
                     </div>
-                    <div class="network flayout1">
-                        <div>
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                xmlns:xlink="http://www.w3.org/1999/xlink"
-                                width="20"
-                                height="20"
-                                viewBox="0 0 32 32"
-                                version="1.1"
-                            >
-                                <g id="icomoon-ignore"></g>
-                                <path
-                                    d="M15.97 18.399c-2.352 0-4.265 1.913-4.265 4.265s1.913 4.265 4.265 4.265c2.352 0 4.265-1.913 4.265-4.265s-1.913-4.265-4.265-4.265zM15.97 25.863c-1.764 0-3.199-1.435-3.199-3.199s1.435-3.199 3.199-3.199c1.764 0 3.199 1.435 3.199 3.199s-1.435 3.199-3.199 3.199z"
-                                ></path>
-                                <path
-                                    d="M15.97 13.601c-3.599 0-6.706 2.114-8.168 5.161l0.798 0.798c1.215-2.872 4.060-4.892 7.37-4.892s6.155 2.021 7.37 4.892l0.798-0.798c-1.462-3.047-4.569-5.161-8.168-5.161z"
-                                ></path>
-                                <path
-                                    d="M16.022 5.071c-5.951 0-11.217 2.973-14.403 7.508l0.764 0.764c2.98-4.347 7.981-7.206 13.638-7.206 5.631 0 10.61 2.832 13.595 7.145l0.764-0.764c-3.19-4.501-8.435-7.447-14.36-7.447z"
-                                ></path>
-                                <path
-                                    d="M16.022 9.336c-4.778 0-8.975 2.529-11.328 6.317l0.776 0.776c2.138-3.604 6.066-6.027 10.552-6.027 4.459 0 8.368 2.393 10.514 5.961l0.774-0.774c-2.36-3.753-6.536-6.254-11.288-6.254z"
-                                ></path></svg
-                            >Network
-                        </div>
-                        <span id="network">0</span><span>%</span>
+                    <span id="battery">100%</span>
+                </div>
+                <div class="network flayout1">
+                    <div>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 32 32"
+                            version="1.1"
+                        >
+                            <g id="icomoon-ignore"></g>
+                            <path
+                                d="M15.97 18.399c-2.352 0-4.265 1.913-4.265 4.265s1.913 4.265 4.265 4.265c2.352 0 4.265-1.913 4.265-4.265s-1.913-4.265-4.265-4.265zM15.97 25.863c-1.764 0-3.199-1.435-3.199-3.199s1.435-3.199 3.199-3.199c1.764 0 3.199 1.435 3.199 3.199s-1.435 3.199-3.199 3.199z"
+                            ></path>
+                            <path
+                                d="M15.97 13.601c-3.599 0-6.706 2.114-8.168 5.161l0.798 0.798c1.215-2.872 4.060-4.892 7.37-4.892s6.155 2.021 7.37 4.892l0.798-0.798c-1.462-3.047-4.569-5.161-8.168-5.161z"
+                            ></path>
+                            <path
+                                d="M16.022 5.071c-5.951 0-11.217 2.973-14.403 7.508l0.764 0.764c2.98-4.347 7.981-7.206 13.638-7.206 5.631 0 10.61 2.832 13.595 7.145l0.764-0.764c-3.19-4.501-8.435-7.447-14.36-7.447z"
+                            ></path>
+                            <path
+                                d="M16.022 9.336c-4.778 0-8.975 2.529-11.328 6.317l0.776 0.776c2.138-3.604 6.066-6.027 10.552-6.027 4.459 0 8.368 2.393 10.514 5.961l0.774-0.774c-2.36-3.753-6.536-6.254-11.288-6.254z"
+                            ></path></svg
+                        >Network
                     </div>
+                    <span id="network">0</span><span>%</span>
+                </div>
+            </div>
+            <div class="weather-today">
+                <h2>Weather Today</h2>
+                <div class="temperature flayout3">
+                    <!-- <span>temperature_f:</span><span id="temperature_f">0</span> -->
+                    <div id="weatherToday"></div>
+                    <span id="temperature_c">0</span><sup>°</sup>
                 </div>
             </div>
 
-            <div class="bottom">
+            <div class="weather-forecast">
                 <h2>Extended Forecast</h2>
                 <div id="weather"></div>
             </div>
