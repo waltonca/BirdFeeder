@@ -291,3 +291,43 @@ function generateUUID() {
     }
     return uuid;
 }
+
+// TODO: connect to image API, http://192.168.1.207:3000/api/images
+
+
+const requestImages = new XMLHttpRequest();
+
+requestImages.onreadystatechange = function () {
+    if (this.readyState == 4 && this.status == 200) {
+        const response = JSON.parse(this.responseText);
+        console.log(response);
+        // Array of images, length 5
+        // test: console time
+        let time = processTime(response.images[0].filetime);
+        console.log("haha" + time);
+        const imageDiv = document.getElementById("image");
+        imageDiv.innerHTML = `<img src="${response.images[0].filepath}" alt="image">`;
+
+    } else {
+        console.log("error");
+    }
+};
+requestImages.open(
+    `GET`,
+    `http://192.168.1.207:3000/api/images`
+);
+requestImages.send();
+
+// process time
+function processTime(originTime) {
+    // covert 1684259797846 into 10/16/2023 16:09:57
+    let date = new Date(originTime);
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+    let hour = date.getHours();
+    let minute = date.getMinutes();
+    let second = date.getSeconds();
+    let processedTime = `${month}/${day}/${year} ${hour}:${minute}:${second}`;
+    return processedTime;
+}
