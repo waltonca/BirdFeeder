@@ -54,12 +54,14 @@ h2 {
 /* CSS3 grid to layout END */
 
 /* latest image section style */
-.latest-image img {
-    width: 100%;
-}
-
 .latest-image #image {
     position: relative;
+}
+
+.latest-image img {
+    width: 700px;
+    height: 525px;
+    overflow: hidden;
 }
 
 .latest-image #image #time {

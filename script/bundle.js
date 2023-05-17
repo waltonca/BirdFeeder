@@ -304,10 +304,16 @@ requestImages.onreadystatechange = function () {
         // Array of images, length 5
         // test: console time
         let time = processTime(response.images[0].filetime);
-        console.log("haha" + time);
+        // console.log("haha" + time);
         const imageDiv = document.getElementById("image");
-        imageDiv.innerHTML = `<img src="${response.images[0].filepath}" alt="image">`;
-
+        imageDiv.innerHTML = `<img src="${response.images[0].filepath}" alt="bird"><span id="time">${time}</span>`;
+        // update other 4 pictures
+        const otherImages = document.getElementsByClassName("other-picture");
+        // console.log(otherImages);
+        for (let i = 0; i < otherImages.length; i++) {
+            // console.log(otherImagesp[i]);
+            otherImages[i].innerHTML = `<img src="${response.images[i + 1].filepath}" alt="bird"><span id="time">${processTime(response.images[i + 1].filetime)}</span>`;
+        }
     } else {
         console.log("error");
     }
