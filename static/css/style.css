@@ -55,6 +55,8 @@ h2 {
 
 /* latest image section style */
 .latest-image #image {
+    width: 700px;
+    height: 525px;
     position: relative;
 }
 
@@ -66,9 +68,35 @@ h2 {
 
 .latest-image #image #time {
     width: 100%;
-    height: 30px;
-    line-height: 30px;
-    font-size: 1.5rem;
+    height: 38px;
+    line-height: 38px;
+    font-size: 1.8rem;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: #fff;
+}
+
+/* other pictures */
+.other-picture {
+    width: 345px;
+    height: 258px;
+    position: relative;
+}
+
+.other-picture img {
+    width: 345px;
+    height: 258px;
+    overflow: hidden;
+}
+
+.other-picture #time {
+    width: 100%;
+    height: 38px;
+    line-height: 38px;
+    font-size: 1.8rem;
     text-align: center;
     position: absolute;
     left: 0;
