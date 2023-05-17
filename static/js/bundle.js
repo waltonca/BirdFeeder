@@ -218,14 +218,14 @@ request.onreadystatechange = function () {
             weatherDiv.innerHTML += `
             <div class="weather-item">
             <h6>${dayOfWeek}</h6>
-            <img src="images/weather/${weatherIcon}.svg" alt="${weatherName}">
+            <img src="/static/images/weather/${weatherIcon}.svg" alt="${weatherName}">
             <p>${weatherName}</p>
             <span>${lowestTemp}<sup>°</sup><small>/</small>${highestTemp}<sup>°</sup></span></div>`;
 
             if (i == 0) {
                 // display today's weather data on weather today section, only the icon
                 const weatherTodayIcon = document.getElementById("weatherToday");
-                weatherTodayIcon.innerHTML = `<img src="images/weather/${weatherIcon}.svg" alt="${weatherName}">`;
+                weatherTodayIcon.innerHTML = `<img src="/static/images/weather/${weatherIcon}.svg" alt="${weatherName}">`;
             }
         }
     } else {
