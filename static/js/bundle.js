@@ -17,9 +17,6 @@ const jsonDataString = JSON.stringify(jsonData);
 // Call the displayTime() function every second
 setInterval(displayTime, 1000);
 
-getHumidityGauge(40);//test humidity gauge
-getNetworkGauge(80)
-
 const options = {
     clientId: "clientId-walton-" + generateUUID(),
 };
@@ -60,7 +57,7 @@ client.on("connect", function () {
             // document.getElementById("humidity").innerHTML =
             sensorsJson.humidity;
             // add data visualization
-            getHumidityGauge(30);
+            getHumidityGauge(sensorsJson.humidity ? 0 : sensorsJson.humidity);
             // getHeatIndexGauge(25, 70);
 
         }
@@ -83,7 +80,7 @@ client.on("connect", function () {
             console.log(`WiFi: ${wifiJson}`);
             document.getElementById("network").innerHTML = wifiJson;
             // add data visualization
-            // getBatteryGauge(wifiJson);
+            getBatteryGauge(wifiJson ? 0 : wifiJson);
 
         }
 
@@ -220,8 +217,8 @@ request.onreadystatechange = function () {
                     weatherIcon = "sunny";
             }
             // get lowest and highest temperature
-            const lowestTemp = weatherData[i].temp.min.toFixed(1);
-            const highestTemp = weatherData[i].temp.max.toFixed(1);
+            const lowestTemp = weatherData[i].temp.min.toFixed(0);
+            const highestTemp = weatherData[i].temp.max.toFixed(0);
 
             // display weather data HTML
             const weatherDiv = document.getElementById("weather");
