@@ -17,6 +17,9 @@ const jsonDataString = JSON.stringify(jsonData);
 // Call the displayTime() function every second
 setInterval(displayTime, 1000);
 
+getHumidityGauge(40);//test humidity gauge
+getNetworkGauge(80)
+
 const options = {
     clientId: "clientId-walton-" + generateUUID(),
 };
@@ -54,8 +57,12 @@ client.on("connect", function () {
             document.getElementById("temperature_c").innerHTML =
                 sensorsJson.temp_c;
             // document.getElementById("temperature_f").innerHTML = sensorsJson.temp_f;
-            document.getElementById("humidity").innerHTML =
-                sensorsJson.humidity;
+            // document.getElementById("humidity").innerHTML =
+            sensorsJson.humidity;
+            // add data visualization
+            getHumidityGauge(30);
+            // getHeatIndexGauge(25, 70);
+
         }
 
         if (topic === "birdFeeder$@NsCc&_%/Photos") {
@@ -75,6 +82,9 @@ client.on("connect", function () {
             const wifiJson = JSON.parse(wifi.toString());
             console.log(`WiFi: ${wifiJson}`);
             document.getElementById("network").innerHTML = wifiJson;
+            // add data visualization
+            // getBatteryGauge(wifiJson);
+
         }
 
         // client.end();
@@ -337,3 +347,114 @@ function processTime(originTime) {
     let processedTime = `${month}/${day}/${year} ${hour}:${minute}:${second}`;
     return processedTime;
 }
+
+
+// Data Visualization functions
+//Humidity Widget
+function getHumidityGauge(humidity) {
+    // console.log('data visual humidity');
+    let circulargauge = new ej.circulargauge.CircularGauge({
+        axes: [{
+            radius: '100%',
+            minimum: 0,
+            maximum: 100,
+            startAngle: 240,
+            endAngle: 120,
+            lineStyle: { width: 0 },
+            majorTicks: { color: 'white', offset: -5, height: 12 },
+            minorTicks: { width: 0 },
+            labelStyle: {
+                useRangeColor: true,
+                font: {
+                    color: '#424242',
+                    size: '20px',
+                    fontFamily: 'Poppins',
+                    fontWeight: 'bold'
+                }
+            },
+            annotations: [{
+                content:
+                    '<div id="humidityTxt" style="font-size: 35px">' + humidity + "%</div>",
+                radius: "-60%",
+                angle: 0,
+                zIndex: "1",
+            }],
+            pointers: [{
+                value: humidity,
+                radius: '60%',
+                color: '#76eeef',
+                cap: { radius: 10, border: { color: '#33BCBD', width: 5 } },
+                animation: { enable: true, duration: 1500 }
+            }],
+            ranges: [{
+                start: 0,
+                end: 50,
+                startWidth: 10, endWidth: 10,
+                radius: '102%',
+                color: '#76eeef',
+            }, {
+                start: 50,
+                end: 120,
+                radius: '102%',
+                startWidth: 10, endWidth: 10,
+                color: '#54b4b5',
+            }]
+        }],
+
+    });
+    circulargauge.appendTo('#humidityVisual');
+}
+
+//Network Widget
+function getNetworkGauge(value) {
+    let circulargauge = new ej.circulargauge.CircularGauge({
+        axes: [
+            {
+                startAngle: 0,
+                endAngle: 360,
+                lineStyle: { width: 0 },
+                labelStyle: {
+                    font: {
+                        fontFamily: "Roboto",
+                        fontStyle: "Regular",
+                        size: "0px",
+                        fontWeight: "Regular",
+                    },
+                },
+                annotations: [
+                    {
+                        content:
+                            '<div id="battery-life" style="font-size: 35px">' + value + "%</div>",
+                        radius: "0%",
+                        angle: 0,
+                        zIndex: "1",
+                    },
+                ],
+                ranges: [
+                    {
+                        start: 0,
+                        end: 100,
+                        radius: "100%",
+                        startWidth: 30,
+                        endWidth: 30,
+                        color: "#E0E0E0",
+                    },
+                ],
+                pointers: [
+                    {
+                        value: value,
+                        radius: "100%",
+                        pointerWidth: 30,
+                        color: "#53a7a7",
+                        type: "RangeBar"
+                    },
+                ],
+                majorTicks: { width: 0 },
+                minorTicks: { width: 0 },
+            },
+        ],
+    });
+
+    circulargauge.appendTo("#NetworkVisual");
+}
+
