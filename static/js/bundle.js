@@ -227,7 +227,7 @@ request.onreadystatechange = function () {
             <h6>${dayOfWeek}</h6>
             <img src="/static/images/weather/${weatherIcon}.svg" alt="${weatherName}">
             <p>${weatherName}</p>
-            <span>${lowestTemp}<sup>°</sup><small>/</small>${highestTemp}<sup>°</sup></span></div>`;
+            <span>${highestTemp}<sup>°</sup><small>/</small>${lowestTemp}<sup>°</sup></span></div>`;
 
             if (i == 0) {
                 // display today's weather data on weather today section, only the icon
