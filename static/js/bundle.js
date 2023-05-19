@@ -14,6 +14,7 @@ Description:
 // initialize the variable
 let humidityValue = 0;
 let networkValue = 0;
+let cpuTempValue = 0;
 
 // main
 // display time and date every second
@@ -40,6 +41,10 @@ client.on("connect", function () {
     client.subscribe("birdFeeder$@NsCc&_%/Photos/#");
     // subscribe to WiFi topic
     client.subscribe("birdFeeder$@NsCc&_%/WiFi/#");
+    // subscribe to ldr topic
+    client.subscribe("birdFeeder$@NsCc&_%/ldr/#");
+    // subscribe to CPU Temperature topic
+    client.subscribe("birdFeeder$@NsCc&_%/CPU/#");
 
     // publish fake data
     // client.publish('birdFeeder', jsonDataString);
@@ -90,6 +95,37 @@ client.on("connect", function () {
                 circulargaugeNetwork.axes[0].pointers[0].value = wifiJson;
                 circulargaugeNetwork.axes[0].annotations[0].content = '<div id="humidityTxt" style="font-size: 35px">' + wifiJson + "%</div>";
             }
+        }
+
+        if (topic === "birdFeeder$@NsCc&_%/CPU") {
+            // Wifi topic
+            let cpuTemp = message;
+            // const wifi = photo.toString();
+            const cpuTempJson = JSON.parse(cpuTemp.toString());
+            console.log(`CPUTemp: ${cpuTempJson}`);
+            document.getElementById("cpuTempVisual").innerHTML = cpuTempJson;
+            // add data visualization
+            // if (circulargaugeLight !== undefined) {
+            //     circulargaugeLight.axes[0].pointers[0].value = wifiJson;
+            //     circulargaugeLight.axes[0].annotations[0].content = '<div id="humidityTxt" style="font-size: 35px">' + wifiJson + "%</div>";
+            // }
+        }
+
+        if (topic === "birdFeeder$@NsCc&_%/ldr") {
+            // Wifi topic
+            let ldr = message;
+            // const wifi = photo.toString();
+            const ldrJson = JSON.parse(ldr.toString());
+            console.log(`ldr: ${ldrJson}`);
+            document.getElementById("lightVisual").innerHTML = ldrJson;
+            // if ldr value is greater than 0.5, then it is dark
+            if (ldrJson > 0.5) {
+                document.getElementById("lightVisual").innerHTML = "<img src='/static/images/nighttime.png' />";
+            } else {
+                document.getElementById("lightVisual").innerHTML = "<img src='/static/images/daytime.png' />";
+            }
+
+
         }
 
         // client.end();
@@ -244,7 +280,7 @@ request.onreadystatechange = function () {
             }
         }
     } else {
-        console.log("error");
+        console.log("Weather API has error");
     }
 };
 request.open(
@@ -329,7 +365,7 @@ requestImages.onreadystatechange = function () {
             otherImages[i].innerHTML = `<img src="${response.images[i + 1].filepath}" alt="bird"><span id="time">${processTime(response.images[i + 1].filetime)}</span>`;
         }
     } else {
-        console.log("error");
+        console.log("AI Images API has error");
     }
 };
 requestImages.open(
@@ -354,6 +390,56 @@ function processTime(originTime) {
 
 
 // Data Visualization functions
+//CPU temperature Widget, cpuTempValue
+let circulargaugeCPUTemp = new ej.circulargauge.CircularGauge({
+    axes: [{
+        radius: '100%',
+        minimum: 0,
+        maximum: 100,
+        startAngle: 240,
+        endAngle: 120,
+        lineStyle: { width: 0 },
+        majorTicks: { color: 'white', offset: -5, height: 12 },
+        minorTicks: { width: 0 },
+        labelStyle: {
+            useRangeColor: true,
+            font: {
+                color: '#424242',
+                size: '20px',
+                fontFamily: 'Poppins',
+                fontWeight: 'bold'
+            }
+        },
+        annotations: [{
+            content:
+                '<div id="cpuTempTxt" style="font-size: 35px">' + cpuTempValue + "°</div>",
+            radius: "-60%",
+            angle: 0,
+            zIndex: "1",
+        }],
+        pointers: [{
+            value: cpuTempValue,
+            radius: '60%',
+            color: '#76eeef',
+            cap: { radius: 10, border: { color: '#33BCBD', width: 5 } },
+        }],
+        ranges: [{
+            start: 0,
+            end: 50,
+            startWidth: 10, endWidth: 10,
+            radius: '102%',
+            color: '#24e707',
+        }, {
+            start: 50,
+            end: 120,
+            radius: '102%',
+            startWidth: 10, endWidth: 10,
+            color: '#f71100',
+        }]
+    }],
+
+});
+circulargaugeCPUTemp.appendTo('#cpuTempVisual');
 //Humidity Widget
 let circulargaugeHumidity = new ej.circulargauge.CircularGauge({
     axes: [{
@@ -404,7 +490,6 @@ let circulargaugeHumidity = new ej.circulargauge.CircularGauge({
 
 });
 circulargaugeHumidity.appendTo('#humidityVisual');
-console.log(circulargaugeHumidity == true);
 
 //Network Widget
 let circulargaugeNetwork = new ej.circulargauge.CircularGauge({

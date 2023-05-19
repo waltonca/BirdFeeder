@@ -324,3 +324,34 @@ h2 {
     width: 190px;
     height: 30px;
 }
+
+.light {
+    margin-left: 55px;
+}
+
+#lightVisual img {
+    width: 170px;
+    height: 170px;
+}
+
+.cpuTemp {
+    margin-left: 55px;
+    position: relative;
+}
+
+.gauge-c {
+    width: 190px;
+    height: 190px;
+}
+
+#cpuTempTxt {
+    color: rgb(48, 128, 200);
+}
+
+.cpuTemp p {
+    color: rgb(48, 128, 200);
+    font-size: 20px;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+}
