@@ -184,22 +184,17 @@ h2 {
 }
 
 .humidity {
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    -webkit-box-pack: start;
-    justify-content: flex-start;
-    margin-bottom: 0.8rem;
-    margin-left: 4rem;
+    margin-left: 2rem;
+    position: relative;
 }
 
-.humidity div {
-    color: rgb(123, 152, 178);
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    font-size: 1.5rem;
-    width: 8rem;
+.humidity p {
+    font-size: 20px;
+    position: absolute;
+    bottom: 190px;
+    left: 0;
+    width: 190px;
+    text-align: center;
 }
 
 /* btn-slide for unit */
@@ -301,7 +296,6 @@ h2 {
     display: inline-block;
     width: 190px;
     height: 190px;
-    margin-left: 2rem;
 }
 
 .gauge-n {
@@ -318,6 +312,7 @@ h2 {
 
 .network {
     position: relative;
+    color: rgb(48, 128, 200);
 }
 
 .network p {
