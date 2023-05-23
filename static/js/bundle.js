@@ -103,12 +103,12 @@ client.on("connect", function () {
             // const wifi = photo.toString();
             const cpuTempJson = JSON.parse(cpuTemp.toString());
             console.log(`CPUTemp: ${cpuTempJson}`);
-            document.getElementById("cpuTempVisual").innerHTML = cpuTempJson;
+            // document.getElementById("cpuTempVisual").innerHTML = cpuTempJson;
             // add data visualization
-            // if (circulargaugeLight !== undefined) {
-            //     circulargaugeLight.axes[0].pointers[0].value = wifiJson;
-            //     circulargaugeLight.axes[0].annotations[0].content = '<div id="humidityTxt" style="font-size: 35px">' + wifiJson + "%</div>";
-            // }
+            if (circulargaugeCPUTemp !== undefined) {
+                circulargaugeCPUTemp.axes[0].pointers[0].value = cpuTempJson;
+                circulargaugeCPUTemp.axes[0].annotations[0].content = '<div id="cpuTempTxt" style="font-size: 35px">' + cpuTempJson + "%</div>";
+            }
         }
 
         if (topic === "birdFeeder$@NsCc&_%/ldr") {
@@ -124,8 +124,6 @@ client.on("connect", function () {
             } else {
                 document.getElementById("lightVisual").innerHTML = "<img src='/static/images/daytime.png' />";
             }
-
-
         }
 
         // client.end();
