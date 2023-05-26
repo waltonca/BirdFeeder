@@ -381,7 +381,7 @@ function processTime(originTime) {
     let year = date.getFullYear();
     let hour = date.getHours();
     let minute = date.getMinutes();
-    let second = date.getSeconds();
+    let second = date.getSeconds().toString().padStart(2, '0');
     let processedTime = `${month}/${day}/${year} ${hour}:${minute}:${second}`;
     return processedTime;
 }
