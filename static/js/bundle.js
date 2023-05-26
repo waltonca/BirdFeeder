@@ -107,7 +107,7 @@ client.on("connect", function () {
             // add data visualization
             if (circulargaugeCPUTemp !== undefined) {
                 circulargaugeCPUTemp.axes[0].pointers[0].value = cpuTempJson;
-                circulargaugeCPUTemp.axes[0].annotations[0].content = '<div id="cpuTempTxt" style="font-size: 35px">' + cpuTempJson + "%</div>";
+                circulargaugeCPUTemp.axes[0].annotations[0].content = '<div id="cpuTempTxt" style="font-size: 35px">' + cpuTempJson + "°</div>";
             }
         }
 
